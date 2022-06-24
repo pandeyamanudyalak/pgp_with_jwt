@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% include 'pgpGlass/navbar.html' %}
+{% block content %}
+
+{% endblock %}
+
+<form>
+<center>
+    <table border="1">
+        {% for data in data %}
+        <tr>
+            <td>{{data.loggedPerson}}</td>
+            <td>{{data.workDescription}}</td>
+            <td>{{data.typeOfWork}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</center>
+</form>
+
+</body>
+</html>

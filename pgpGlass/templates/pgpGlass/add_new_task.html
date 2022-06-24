@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+<body>
+{% include 'pgpGlass/navbar.html' %}
+{% block content %}
+
+{% endblock %}
+<center><h2>ADD NEW TASK</h2></center>
+<form method="post" action="{% url 'addtask' %}">
+    {% csrf_token %}
+<center>
+    <!-- Hidden Fields To Save The Selected Persons Name   -->
+    <input type="hidden" id="person" name="person" value="{{person}}">
+    <input type="hidden" id="person1" name="person1" value="{{person1}}">
+    <input type="hidden" id="person2" name="person2" value="{{person2}}">
+    <!-- ****************************************************************   -->
+
+    <table style="border-collapse:separate;
+                border-spacing:0 15px;">
+        <tr>
+            <td>Date ::  </td>
+            <td><input type="date" name="date" id="date"></td>
+        </tr>
+        <tr>
+            <td>Type Of Work ::  </td>
+            <td><input type="checkbox" id="Height Work" name="checks[]" value="Height Work"> Height Work</td>
+            <td><input type="checkbox" id="Cold Work" name="checks[]" value="Cold Work"> Cold Work</td>
+            <td><input type="checkbox" id="Civil Work" name="checks[]" value=" Civil Work"> Civil Work</td>
+            <td><input type="checkbox" id="Hot Work" name="checks[]" value="Hot Work"> Hot Work</td>
+            <td><input type="checkbox" id="Confined Work" name="checks[]" value="Confined Work"> Confined Work</td>
+        </tr>
+        <tr >
+            <td>Number Of Person ::  </td>
+            <td><input type="text" id="txtnop" name="txtnop"></td>
+        </tr>
+        <tr >
+            <td>Start Time ::  </td>
+            <td><input type="time" id="txtstarttime" name="txtstarttime"></td>
+        </tr>
+        <tr >
+            <td>End Time ::  </td>
+            <td><input type="time" id="txtendtime" name="txtendtime"></td>
+        </tr>
+        <tr>
+            <td>Equipment ::  </td>
+            <td><input type="text" id="txtequipment" name="txtequipment"></td>
+        </tr>
+        <tr>
+            <td>Tool Required ::  </td>
+            <td><input type="text" id="txtTool" name="txtTool"></td>
+        </tr>
+        <tr>
+            <td>Location ::  </td>
+            <td><select id="city" name="city" class="btn btn-light" style="width:200px; height:40px;">
+                <option selected="selected" disabled>-- Select Location --</option>
+                {% for i in location %}
+                <option value="{{i.location}}">{{i.location}}</option>
+                {% endfor %}
+            </select><br/><br/></td>
+        </tr>
+        <tr>
+            <td>Agency ::  </td>
+            <td><input type="text" id="txtagency" name="txtagency"></td>
+        </tr>
+        <tr>
+            <td>Work Description ::  </td>
+            <td><input type="text" id="txtdesc" name="txtdesc"></td>
+        </tr>
+        <tr>
+            <td>PPE Required ::  </td>
+            <td><input type="checkbox" id="Helmet" name="ppe[]" value="Helmet"> Helmet</td>
+            <td><input type="checkbox" id="Safety Work" name="ppe[]" value="Safety Work"> Safety Work</td>
+            <td><input type="checkbox" id="Safety Shoes" name="ppe[]" value="Safety Shoes">Safety Shoes</td>
+            <td><input type="checkbox" id="Googles" name="ppe[]" value="Googles">Googles</td>
+            <td><input type="checkbox" id="Face Shield" name="ppe[]" value="Face Shield"> Face Shield</td>
+        </tr>
+    </table>
+     <button type="submit" class="btn btn-danger" id ="btnnext">Next</button>
+</center>
+</form>
+</body>
+</html>
