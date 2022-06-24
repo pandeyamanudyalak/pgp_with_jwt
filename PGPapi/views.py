@@ -486,7 +486,7 @@ class closedByPersonForm(APIView):
 class completedTask(APIView):
     authentication_classes = [JWTAuthentication]
     permission_classes= [IsAuthenticated]
-    def get(self, request,name):
+    def get(self, request):
         form_data = formData.objects.all().values()
         for data in form_data:
             if request.user.id == data['person1_id']:
