@@ -543,28 +543,6 @@ class loginApiView(APIView):
         return response
 
 
-
-
-# class userAPIView(APIView):
-#     def get(self,request):
-#         auth=get_authorization_header(request).split()
-#         if auth and len(auth) ==2:
-#             token=auth[1].decode('utf-8')
-#             print('----------------------token inside view',token)
-
-#             id = decode_access_token(token)
-#             print('----------------id',id)
-
-#             user= CustomUser.objects.get(id=id)
-#             print('======user',user)
-             
-#             if user:
-#                 serializer=   userLoginSerializer(user)
-#                 print(serializer)
-#                 return Response(serializer.data)
-
-#         raise exceptions.AuthenticationFailed('unauthenticated')
-
 class userAPIView(APIView):
     authentication_classes = [JWTAuthentication]
     def get(self,request):
